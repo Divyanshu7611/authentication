@@ -7,7 +7,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { Cookie } from "next/font/google";
 
 export async function POST(request: Request, response: Response) {
-  const { email, password } = await request.json();
+  const { email, password } = await request.body;
 
   const JwtKey = process.env.JWT_SECRET || "TodoApp";
 
