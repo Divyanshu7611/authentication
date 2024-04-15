@@ -1,12 +1,11 @@
-import { Request, Response } from "express";
 import { ConnectMongoDB, DisconnectMongoDB } from "@/utils/dbConnect";
 import User from "../../../models/user";
 import bcrypt from "bcrypt";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export async function POST(request: Request) {
+export async function POST(NextRequest: NextRequest) {
   const { name, email, phone, password, confirmPassword, gender } =
-    await request.body;
+    await NextRequest.json();
 
   try {
     await ConnectMongoDB();
